@@ -1,46 +1,79 @@
-# Getting Started with Create React App
+# SDLC User Story Flow
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This React project showcases an interactive visualisation of the Software Development Life Cycle (SDLC) process for user stories, from inception to completion, with emphasis on what it should look like from a Software Quality Engineering perspective.
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+The SDLCUserStoryFlow component provides a comprehensive view of the stages a user story goes through in a typical software development process. It includes 15 stages, each with detailed steps that can be expanded or collapsed for easy viewing.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Interactive UI with expandable/collapsible stages
+- Color-coded stages for easy identification
+- Responsive design (grid layout adapts to different screen sizes)
+- Hover effects for improved user experience
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Stages
 
-### `npm test`
+1. Requirements Gathering
+2. Backlog Grooming
+3. Design and Planning
+4. Task Breakdown
+5. Sprint Kick-off
+6. Development
+7. SQE Review
+8. Iteration
+9. Automated Testing
+10. Final Review
+11. Merging and Deployment
+12. Release Planning
+13. Production Readiness Review
+14. Post-Deployment Tracking
+15. Final Review and Closure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
 
-### `npm run build`
+To use this component in your React application:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Import the component:
+```javascript
+import SDLCUserStoryFlow from './SDLCUserStoryFlow';
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Render the component:
+```
+<SDLCUserStoryFlow />
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Or to locally host the component on it's own:
 
-### `npm run eject`
+1. Run:
+```sh
+npm install
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+2. Then navigate to `http://localhost:3000`.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Dependencies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Node.js
+- React
+- Lucide React (for ChevronRight and ChevronDown icons)
+- Tailwind CSS (for styling)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Customisation
 
-## Learn More
+You can easily customize the stages, colors, and steps by modifying the stages array in the component (`./src/SDLCUserStoryFlow.tsx`). Each `stage` object contains:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- name: The name of the stage
+- color: Tailwind CSS classes for background color
+- steps: An array of strings describing each step in the stage
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributing
+
+Contributions to improve or extend this SDLC User Story Flow visualisation are welcome. Please feel free to submit pull requests or open issues for any enhancements or bug fixes.
+
+## License
+
+This project is licensed under the GPL 3.0 License - see the [LICENSE](LICENSE) file for details.
