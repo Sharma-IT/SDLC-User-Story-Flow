@@ -11,21 +11,147 @@ const SDLCUserStoryFlow: React.FC = () => {
   const [expandedStages, setExpandedStages] = useState<Record<number, boolean>>({});
 
   const stages: Stage[] = [
-    { name: 'Requirements Gathering', color: 'bg-blue-100 hover:bg-blue-200', steps: ['BA gathers requirements', 'BA creates user stories', 'BA hands over to SQE'] },
-    { name: 'Backlog Grooming', color: 'bg-purple-100 hover:bg-purple-200', steps: ['Team grooming sessions', 'Prioritize and assign points', 'Select for sprint'] },
-    { name: 'Design and Planning', color: 'bg-green-100 hover:bg-green-200', steps: ['Create wireframes', 'Discuss technical approach', 'Identify risks'] },
-    { name: 'Task Breakdown', color: 'bg-yellow-100 hover:bg-yellow-200', steps: ['Break into smaller tasks', 'Assign to developers', 'Provide estimates'] },
-    { name: 'Sprint Kick-off', color: 'bg-orange-100 hover:bg-orange-200', steps: ['Kick-off meeting', 'Align on goals', 'Address concerns'] },
-    { name: 'Development', color: 'bg-red-100 hover:bg-red-200', steps: ['Implement changes', 'Write unit tests', 'Open PR draft'] },
-    { name: 'SQE Review', color: 'bg-indigo-100 hover:bg-indigo-200', steps: ['Code review', 'Manual testing', 'Provide feedback'] },
-    { name: 'Iteration', color: 'bg-pink-100 hover:bg-pink-200', steps: ['Address feedback', 'Verify changes', 'Repeat if necessary'] },
-    { name: 'Automated Testing', color: 'bg-teal-100 hover:bg-teal-200', steps: ['Run UI and E2E tests', 'Validate CSS', 'Create performance tests'] },
-    { name: 'Final Review', color: 'bg-cyan-100 hover:bg-cyan-200', steps: ['SQE approval', 'Developer review', 'Set to "Ready for review"'] },
-    { name: 'Merging and Deployment', color: 'bg-lime-100 hover:bg-lime-200', steps: ['Merge to master', 'Deploy to staging/production', 'Set feature flags'] },
-    { name: 'Release Planning', color: 'bg-emerald-100 hover:bg-emerald-200', steps: ['Create PVT plan', 'Handover to stakeholders', 'Organize testing time'] },
-    { name: 'Production Readiness Review', color: 'bg-amber-100 hover:bg-amber-200', steps: ['Turn on feature flag', 'Document issues', 'Determine flag status'] },
-    { name: 'Post-Deployment Tracking', color: 'bg-sky-100 hover:bg-sky-200', steps: ['Monitor for issues', 'Add tests to Zephyr', 'Monitor metrics'] },
-    { name: 'Final Review and Closure', color: 'bg-violet-100 hover:bg-violet-200', steps: ['Review after a week', 'Decide on activation', 'Phase out feature flag'] }
+    {
+      name: 'Requirements Gathering',
+      color: 'bg-blue-100 hover:bg-blue-200',
+      steps: [
+        'BA gathers requirements from stakeholders and end-users',
+        'BA creates user stories with functionality and acceptance criteria',
+        'BA hands over User Stories to SQE for refinement'
+      ]
+    },
+    {
+      name: 'Backlog Grooming',
+      color: 'bg-purple-100 hover:bg-purple-200',
+      steps: [
+        'Development team participates in backlog grooming sessions',
+        'User stories are prioritised and assigned story points',
+        'Stories selected for upcoming sprint based on capacity and priority'
+      ]
+    },
+    {
+      name: 'Design and Planning',
+      color: 'bg-green-100 hover:bg-green-200',
+      steps: [
+        'UI designer creates wireframes and mockups in Figma',
+        'Development team discusses technical approach and architecture',
+        'Potential risks and dependencies are identified and addressed'
+      ]
+    },
+    {
+      name: 'Task Breakdown',
+      color: 'bg-yellow-100 hover:bg-yellow-200',
+      steps: [
+        'Selected user stories are broken down into smaller tasks',
+        'Tasks are assigned to individual developers based on expertise and availability',
+        'Developers provide estimates for task completion'
+      ]
+    },
+    {
+      name: 'Sprint Kick-off',
+      color: 'bg-orange-100 hover:bg-orange-200',
+      steps: [
+        'Sprint begins with a kick-off meeting',
+        'Development team aligns on sprint goals and tasks',
+        'Questions or concerns are addressed before starting development work'
+      ]
+    },
+    {
+      name: 'Development',
+      color: 'bg-red-100 hover:bg-red-200',
+      steps: [
+        'Developer creates a new branch from the master branch',
+        'Developer implements changes based on Figma specs and User Stories',
+        'Developer writes required unit tests',
+        'Developer opens a Pull Request (PR) draft against the master branch'
+      ]
+    },
+    {
+      name: 'SQE Review',
+      color: 'bg-indigo-100 hover:bg-indigo-200',
+      steps: [
+        'SQE checks out the branch locally and sets up testing environment',
+        'SQE reviews and manually tests code changes against the test plan',
+        'SQE provides feedback and comments on the PR',
+        'SQE refines the test plan based on findings'
+      ]
+    },
+    {
+      name: 'Iteration',
+      color: 'bg-pink-100 hover:bg-pink-200',
+      steps: [
+        'Developer reviews SQEs feedback and comments',
+        'Developer makes necessary changes to address feedback',
+        'SQE verifies the updated changes',
+        'Process repeats until changes are satisfactory'
+      ]
+    },
+    {
+      name: 'Automated Testing',
+      color: 'bg-teal-100 hover:bg-teal-200',
+      steps: [
+        'SQE creates and runs automated UI integration and E2E tests',
+        'SQE writes tests to validate expected CSS properties',
+        'SQE creates performance tests if required'
+      ]
+    },
+    {
+      name: 'Final Review',
+      color: 'bg-cyan-100 hover:bg-cyan-200',
+      steps: [
+        'SQE approves and gives green-flag to set PR to "Ready for review"',
+        'Another developer performs code review',
+      ]
+    },
+    {
+      name: 'Merging and Deployment',
+      color: 'bg-lime-100 hover:bg-lime-200',
+      steps: [
+        'PR is merged into the master branch once all requirements are met',
+        'Developer closes the project ticket',
+        'Changes are deployed to staging and production behind a feature flag',
+        'Feature flag is set to off in production and on in staging'
+      ]
+    },
+    {
+      name: 'Release Planning',
+      color: 'bg-emerald-100 hover:bg-emerald-200',
+      steps: [
+        'SQE converts test plan into Production Verification Test (PVT) plan',
+        'SQE hands over PVT to stakeholders (BA, PM, UI Designer)',
+        'SQE and stakeholders organise time to start testing on production'
+      ]
+    },
+    {
+      name: 'Production Readiness Review',
+      color: 'bg-amber-100 hover:bg-amber-200',
+      steps: [
+        'Feature flag is turned on (with an individual targeting rule set-up) to start PVT',
+        'SQE and stakeholders test changes against PVT plan',
+        'Issues are documented in PVT plan under "Triage" section',
+        'Feature flag status determined based on severity of issues found'
+      ]
+    },
+    {
+      name: 'Post-Deployment Tracking',
+      color: 'bg-sky-100 hover:bg-sky-200',
+      steps: [
+        'New PRs opened for bug fixes or improvements if issues found',
+        'SQE adds new automated tests to Zephyr',
+        'Team monitors various metrics (Hotjar, GA4, Splunk, Datadog, Sentry)',
+        'Metrics such as lead time, cycle time, defect rates collected for a week'
+      ]
+    },
+    {
+      name: 'Final Review and Closure',
+      color: 'bg-violet-100 hover:bg-violet-200',
+      steps: [
+        'SQE, PM, and development team review results after a week of monitoring',
+        'Team analyses collected metrics together',
+        'Decision made on permanent activation if no disruptions or irregularities',
+        'Feature flag phased out if change operates smoothly'
+      ]
+    }
   ];
 
   const toggleStage = (index: number) => {
@@ -34,7 +160,7 @@ const SDLCUserStoryFlow: React.FC = () => {
 
   return (
     <div className="p-6 bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg shadow-lg font-sans">
-      <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Comprehensive SDLC User Story Flow</h2>
+      <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">SDLC User Story Flow</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {stages.map((stage, index) => (
           <div key={stage.name} className={`${stage.color} rounded-lg shadow-md transition-all duration-300 ease-in-out transform hover:scale-105`}>
