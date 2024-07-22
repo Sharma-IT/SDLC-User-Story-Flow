@@ -4,7 +4,7 @@ This React project showcases an interactive visualisation of the Software Develo
 
 ## Overview
 
-The SDLCUserStoryFlow component provides a comprehensive view of the stages a user story goes through in a typical software development process. It includes 15 stages, each with detailed steps that can be expanded or collapsed for easy viewing.
+The `SDLCUserStoryFlow` component provides a comprehensive view of the stages a user story goes through in a typical software development process. It includes 15 stages, each with detailed steps that can be expanded or collapsed for easy viewing.
 
 ## Features
 
